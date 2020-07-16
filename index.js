@@ -1,15 +1,26 @@
-function isPalindrome(string) {
-  string = string.toLowerCase();
-  let charactersArr = string.split('');
-  let validCharacters = 'abcdefghijklmnopqrstuwxyz'.split('');
+function caesarCipher(str, num) {
+  num = num % 26;
+  let lowerCaseString = str.toLowerCase();
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  let newString = '';
 
-  let lettersArr = [];
-  charactersArr.forEach(char => {
-    if (validCharacters.indexOf(char) > -1) lettersArr.push(char)
-  });
+  for(let i = 0; i < lowerCaseString.length; i++) {
+    let currentLatter = lowerCaseString[i];
+    if(currentLatter === '') {
+      newString += currentLatter;
+      continue;
+    }
 
-  if(lettersArr.join('') === lettersArr.reverse().join('')) return true;
-  else return false;
+    let currentIndex = alphabet.indexOf(currentLatter);
+    let newIndex = currentIndex + num;
+    if(newIndex > 25) newIndex = newIndex - 26;
+    if(newIndex < 0) newIndex = 26 + newIndex;
+    if(str[i] === str[i].toUpperCase()) {
+      newString += alphabet[newIndex].toUpperCase();
+    } else newString += alphabet[newIndex];
+  };
+
+  return newString;
 }
 
-isPalindrome("Madam I'm Adam");
+caesarCipher('Zoo Keeper', 2);
