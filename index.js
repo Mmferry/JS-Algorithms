@@ -1,17 +1,11 @@
-function reverseWords(string) {
-  let wordArr = string.split(' ');
-  let reversedWordsArr = [];
-
-  wordArr.forEach(word => {
-    let reversedWord = '';
-    for(let i = word.length - 1; i >= 0; i--){
-      reversedWord += word[i];
-    }
-
-    reversedWordsArr.push(reversedWord);
-  });
-
-  return reversedWordsArr.join(' ');
+function reverseArrayInPlace(arr) {
+  for (var i = 0; i < arr.length / 2; i++) {
+    var tempVar = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = tempVar;
+  }
+  
+  return arr;
 }
-
-reverseWords('Mohammed Fared');
+ 
+reverseArrayInPlace([1, 2, 3, 4, 5, 6, 7, 8]);
