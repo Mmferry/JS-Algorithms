@@ -1,13 +1,24 @@
-function fibMemo(index, cache) {
-  cache = cache || [];
-  if (cache[index]) return cache[index];
-  else {
-    if (index < 3) return 1;
-    else {
-      cache[index] = fibMemo(index - 1, cache) + fibMemo(index - 2, cache);
+function sieveOfEratosthenes(n) {
+  var primes = [];
+  for (var i = 0; i <= n; i++) {
+    primes[i] = true;
+  }
+  
+  primes[0] = false;
+  primes[1] = false;
+  
+  for (var i = 2; i <= Math.sqrt(n); i++) {
+    for (j = 2; i * j <= n; j++) {
+      primes[i * j] = false;
     }
   }
-  return cache[index];
+  
+  var result = [];
+  for (var i = 0; i < primes.length; i++) {
+    if (primes[i]) result.push(i);
+  }
+  
+  return result;
 }
  
-fibMemo(50);
+sieveOfEratosthenes(49);
