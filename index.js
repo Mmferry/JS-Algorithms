@@ -1,19 +1,13 @@
-function twoSum(numArray, sum) {
-  let pairs = [];
-  let hashTable = [];
+// Factorial (!)
+// 4! = 4 * 3 * 2 * 1 = 24
+// 3! = 3 * 2 * 1 = 6
 
-  for (let i = 0; i < numArray.length; i++) {
-    let currNum = numArray[i];
-    let counterPart = sum - currNum;
-
-    if (hashTable.indexOf(counterPart) !== -1) {
-      pairs.push([currNum, counterPart]);
-    }
-
-    hashTable.push(currNum);
+function factorial (num) {
+  if(num === 1) {
+    return num;
+  } else {
+    return num * factorial(num - 1);
   }
-
-  return pairs;
 }
 
-twoSum([1, 6, 4, 5, 3, 3], 7);
+factorial(4);
