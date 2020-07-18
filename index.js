@@ -1,15 +1,6 @@
-function binarySearch(numArray, key) {
-  let middleIndex = Math.floor(numArray.length / 2);
-  let middleELem = numArray[middleIndex];
-
-  if(middleELem === key) return true;
-  else if (middleELem < key && numArray.length > 1) {
-    return binarySearch(numArray.splice(middleIndex, numArray.length), key)
-  }
-  else if(middleELem > key && numArray.length > 1) {
-    return binarySearch(numArray.splice(0, middleIndex), key)
-  }
-  else return false;
+function fibonacci(postion) {
+  if (postion < 3) return 1;
+  else return fibonacci(postion - 1) + fibonacci(postion - 2)
 }
 
-binarySearch([5, 7, 16, 36, 39, 42, 56, 71], 56);
+fibonacci(20);
