@@ -1,16 +1,25 @@
-function bubbleSort(array) {
-  for(var i = array.length; i > 0; i--){
-    for(var j = 0; j < i; j++){
-      if(array[j] > array[j + 1]){
-        var temp = array[j];
-        array[j] = array[j + 1];
-        array[j + 1] = temp;
-      }
-    }
-  }
+function mergeSort(arr) {
+  if(arr.length < 2) return arr;
+  var middleIndex = arr.length / 2;
+  var firstHalf = arr.slice(0, middleIndex);
+  var secondHalf = arr.slice(middleIndex);
 
-  return array;
+  return merge(mergeSort(firstHalf), mergeSort(secondHalf));
 }
 
-bubbleSort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 9, 1]);
+function merge(arr1, arr2) {
+  var result = [];
+  while(arr1.length && arr2.length){
+    var minElm;
+    if(arr1[0] < arr2[0]) minElm = arr1.shift();
+    else minElm = arr2.shift();
+    result.push(minElm);
+  }
 
+  if(arr1.length) result = result.concat(arr1);
+  else result = result.concat(arr2);
+
+  return result;
+}
+
+mergeSort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 1, 9, 1]);
