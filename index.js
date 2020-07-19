@@ -1,24 +1,16 @@
-function sieveOfEratosthenes(n) {
-  var primes = [];
-  for (var i = 0; i <= n; i++) {
-    primes[i] = true;
-  }
-  
-  primes[0] = false;
-  primes[1] = false;
-  
-  for (var i = 2; i <= Math.sqrt(n); i++) {
-    for (j = 2; i * j <= n; j++) {
-      primes[i * j] = false;
+function bubbleSort(array) {
+  for(var i = array.length; i > 0; i--){
+    for(var j = 0; j < i; j++){
+      if(array[j] > array[j + 1]){
+        var temp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+      }
     }
   }
-  
-  var result = [];
-  for (var i = 0; i < primes.length; i++) {
-    if (primes[i]) result.push(i);
-  }
-  
-  return result;
+
+  return array;
 }
- 
-sieveOfEratosthenes(49);
+
+bubbleSort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 9, 1]);
+
